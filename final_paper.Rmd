@@ -35,8 +35,16 @@ Thus while there is ample exploration of how youth political participation diffe
 
 ## Data and Methodology ##
 
+The data for this paper is from the European Social Survey (ESS) which is a representative survey carried out every 2 years in all European and a few non-European countries. The ESS is aimed at measuring "the attitudes, beliefs and behaviour patterns of diverse populations in more than thirty nations." The themes covered include media and social trust, politics, demographic conditions, human values, identity, family and well-being. Rigorous standards are specified for sampling in each country in order to ensure the samples are representative. We also utilise data from Eurostat on the annual measure of youth unemployment to get a broader overview of the problem and to describe our motivation for this research better. 
 
+Our data takes the form of a panel with each country being a cross-sectional unit. The time period covered is from 2002 to 2014 at an interval of 2 years as per the format of the ESS. We limit our analysis to individuals between 18 and 25 years of age and subset the data accordingly. An extensive cleaning process had to be undertaken to make the data ready for analysis as per our requirements. Countries outside of Europe and those with not enough survey round data had to be dropped. The variables were limited to exclude the non-responses. 
 
+For our analysis of the relationship between youth unemployment and the political engagement of the youth, we make use of multiple variables that reflect different aspects of an individual's political engagement - political interest, participation in the political process, trust in political infrastructure etc.
+Regression analysis is employed to look at the impact of unemployment on three dimensions of political engagements namely political interest (polintr), participation in public demonstration (pbldmn) and voting(vote). Using multivariate regression, we analyse the impact of unemployment status of an individual on his/her level of political interest, controlling for gender, education levels and association with trade union(s). The gradation in the impact of different education levels (ranging from less than lower secondary to MA level) is also estimated. 
+
+For the other two variables -participation in a lawful public demonstration in the last 12 months(pbldmn) and voting in last national election (vote) - logistic regression is undertaken as both of them are dichotomous variables carrying values 0 and 1. Controls include......
+
+- Equations for the different models here -
 
 
 
@@ -102,6 +110,8 @@ stargazer::stargazer(m3.1a, m3.1b, m3.1c, covariate.labels = m3.1blabels, type =
 
 
 ```  
+
+## Conclusion ##
 
 
 
