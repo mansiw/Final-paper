@@ -1,0 +1,109 @@
+---
+title: "Final paper"
+author: "Mansi Wadhwa & Tori Dykes"
+date: "Friday, December 09, 2016"
+output: pdf_document
+---
+
+## Table of Contents ##
+
+## Introduction ##
+
+
+## Research Question ##
+
+Europe's youth population has seen significant tumult in the job market over the last ten years. The recession of 2008 hit all of Europe, but not all were equally affected. Germany was largely lucky, with 11.9 percent youth unemployment in 2007, 11.3 percent in 2009, and just 7.3 percent today (based on OECD statistics). Ireland, on the other hand, has seen a significant increase in the youth unemployment rate, jumping from 9.1 percent in 2007 to 24.0 percent just two years later. The situation is only slightly better today, with a rate of 20.9 percent. But of course, the poster children for youth unemployment in Europe today are Spain and Greece. Both countries already had fairly high youth unemployment rates in 2007 (18.1 percent for Spain and 22.7 percent for Greece), but they quickly ballooned in the years after. The numbers currently stand at a staggering 48.4 percent for Spain and 49.8 percent for Greece.
+
+Out of this dire situation has arisen some notable political movements like Podemos in Spain and Syriza in Greece that feature youth support as a key pillar and the issue of unemployment as a key issue. Though the actual political efficacy of these parties can be debated, the rise of these movements raises questions about whether the frustration and desperation of unemployment (especially long-term unemployment) translates into political action or apathy. Do young people looking for work tend to feel abandoned by their government and choose to withdraw and detach from political activities? Or do they channel this frustration into a desire to change the system that by some accounts has failed them? 
+
+Answering these questions is a complicated web of matching internal feelings to external action, plus there is the need to isolate the effects of unemployment from other factors that might encourage or discourage political engagement. Thus, gathering meaningful data and then being able to draw empirically-supported causal conclusions on this topic is not easy. To that end, we do not expect to be able to prove definitively that unemployment does or does not cause youths to engage more politically. But, we hope to at least illustrate how, if at all, the the levels (and types) of political engagement seen among European youth are related to the youth unemplyoment rate.
+
+In summation our working research question is, **"How does the youth unemployment rate in European countries affect the level and type of political engagement among youths in those same countries?"**
+
+
+
+
+## Literature Review ##
+
+The intersection and interaction between youth unemployment and political participation/engagement has been explored to varying degrees. The studies tend to investigate the basic premise that unemployment leads to social exclusion which leads to detachment from politics.
+
+A study of unemployed youth in Geneva [@LorenziniGiugni] found that there was no real difference in the political involvement of unemployed and employed youth when looking at activities like protesting and contacting politicians, though unemployed youth were more likely to partake in consumer-based forms of involvement (e.g., boycotts or buying items with a political motivation). A different study made use of the same data set [@Lorenzini], focusing instead on the role life satisfaction plays in fostering political engagement. It found, somewhat unexpectedly, that among unemployed youth, life dissatisfaction actually decreases political engagement. In both studies, the results offer additional perspective on youth unemployment and political engagement, but the focus is quite narrow, since only youths in one specific European city are included. A study from Baglioni, Pasquale, and Theiss [-@BaglEtAl] suggested that associational membership can have a positive effect on keeping unemployed youths engaged in politics, the idea being that these memberships compensate for the role a normal working environment would have played in fostering political interest and connections.
+
+On the more general subject of youth political participation, Sloam [-@Sloam14] looked at youths in the U.S., Great Britain and Germany. The main theme of his analysis is focusing on the evolution of political participation rather than its decline - it is true that fewer young people turn out in national elections these days, but they are more likely to instead partake in a greater variety of activities like demonstrating, campaigning and otherwise engaging with elected officials. Sloam ackonowledges the role unemployment and general social exclusion play in influencing whether and how youth engage themselves but doesn't offer a sophisticated analysis thereof. @KiiselEtAl took a similar approach, using ESS data to compare responses regarding political and civic participation of both Euroepan youths and adults. Similar to Sloam, they found lower levels of traditional political participation among youths today but greater involvement in "newer" forms of political engagement, although they did not find a striking difference between adult and youth involvement for any type of engagement. 
+
+Thus while there is ample exploration of how youth political participation differs (if at all) from the political participation of adults, as well as if unemployment is related to political disengagement (both generally and among youths), there have been far fewer efforts to compare country-level data on youth unemployment with country-level data on youth political engagement and establish if any trend or connection exists between the two. 
+
+## Data and Methodology ##
+
+
+
+
+
+
+## Descriptive Statistics ##
+
+# Unemployment in Europe over the years
+
+```{r, echo = F}
+Unemp0810 <- subset(YouthData, YouthData$TIME==2008 | YouthData$TIME==2010)
+
+Unemp0810$TIME <- factor(Unemp0810$TIME) # Ensure year is treated as levels, not as continuous numbers
+
+Unemp0810 <- group_by(Unemp0810, cntry, TIME)
+
+
+Unemp0810$Value <- as.numeric(as.character(Unemp0810$Value)) # Ensure all the unemployment value are numerics 
+
+ggplot(data=Unemp0810, aes(x=cntry, y=Value, fill=TIME)) + geom_bar(stat="identity", position=position_dodge()) + labs(x="Country", y="Unemployment Rate (% of active population)") + ggtitle("Youth Unemployment Rates in Europe, 2008 - 2010")
+
+```
+
+# Trends in Political Interest Across Countries 
+
+```{r, echo = F, warning = F, message = F}
+compare <- subset(YouthData, YouthData$cntry == "DE"|YouthData$cntry == "DK"|YouthData$cntry == "ES"|YouthData$cntry == "FR"|YouthData$cntry == "HU"|YouthData$cntry == "IE"|YouthData$cntry == "NL")
+
+ggplot(data = compare, aes(x=TIME, y=avgpolintr)) + geom_line(aes(colour=cntry)) + scale_x_continuous(name="Years", breaks = c(2002, 2004, 2006, 2008, 2010, 2012),labels=c("2002","2004","2006","2008","2010","2012"), limits = c(2002,2012))
+```
+
+# Trends in Political Interest Across Education Levels 
+
+```{r, echo = F}
+
+library(sjPlot)
+
+sjp.setTheme(title.align = "center", title.size = 1.5)
+sjp.grpfrq(ESSData$eisced, ESSData$polintr, show.prc = F, show.n = F, 
+           axis.titles = c("Education Levels","Frequency"), 
+           axis.labels = c("Less than Secondary","Lower \nSecondary","Lower Tier Upper \nSecondary",
+                           "Upper Tier Upper \nSecondary","Advanced Vocational","BA","MA"),
+           title = c("Distribution of Political Interest by Educational Level"))
+
+```
+
+
+
+
+## Results ##
+
+
+Impact of unemployment on political interest
+
+```{r}
+m3.1a <- lm(polintr ~ unempdummy, data = ESSData)
+
+m3.1b <- lm(polintr ~ unempdummy + gndr + factor(eisced) - 1 + uniondummy, data = ESSData)
+
+m3.1c <- lm(polintr ~ unempdummy + gndr + eisced + uniondummy, data = ESSData)
+
+m3.1blabels <- c("Unemployment","Gender","Less than secondary","Lower secondary","L. Tier Upper Secondary","U. Tier Upper Secondary","Advanced Vocational","BA","MA")
+
+stargazer::stargazer(m3.1a, m3.1b, m3.1c, covariate.labels = m3.1blabels, type = "html")
+
+
+```  
+
+
+
+## Bibliography ##
+
