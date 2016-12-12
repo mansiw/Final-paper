@@ -3,12 +3,31 @@ title: "Final paper"
 author: "Mansi Wadhwa & Tori Dykes"
 date: "Friday, December 09, 2016"
 output: pdf_document
+bibliography: bibliography.bib
 ---
+
+```{r, echo = F, warning=F, message=F}
+
+source("datacleaningpaper.R")
+
+```
 
 ## Table of Contents ##
 
 ## Introduction ##
 
+
+## Literature Review ##
+
+The intersection and interaction between youth unemployment and political participation/engagement has been explored to varying degrees. The studies tend to investigate the basic premise that unemployment leads to social exclusion which leads to detachment from politics.
+
+A study of unemployed youth in Geneva [@LorenziniGiugni] found that there was no real difference in the political involvement of unemployed and employed youth when looking at activities like protesting and contacting politicians, though the authors did find that unemployed youth were more likely to partake in consumer-based forms of involvement (e.g., boycotts or buying items with a political motivation). A different study made use of the same data set [@Lorenzini], focusing instead on the role life satisfaction plays in fostering political engagement. It found, somewhat unexpectedly, that among unemployed youth, life dissatisfaction actually decreases political engagement. In both studies, the results offer additional perspective on youth unemployment and political engagement, but the focus is quite narrow, since only youths in one specific European city are included. A study from Baglioni, Pasquale, and Theiss [-@BaglEtAl] suggested that associational membership can have a positive effect on keeping unemployed youths engaged in politics, the idea being that these memberships compensate for the role a normal working environment would have played in fostering political interest and connections.
+
+On the more general subject of youth political participation, Sloam [-@Sloam14] looked at youths in the U.S., Great Britain and Germany. The main theme of his analysis is focusing on the evolution of political participation rather than its decline - it is true that fewer young people turn out in national elections these days, but they are more likely to instead partake in a greater variety of activities like demonstrating, campaigning and otherwise engaging with elected officials. Sloam ackonowledges the role unemployment and general social exclusion play in influencing whether and how youth engage themselves but doesn't offer a sophisticated analysis thereof. @KiiselEtAl took a similar approach, using ESS data to compare responses regarding political and civic participation of both Euroepan youths and adults. Similar to Sloam, they found lower levels of traditional political participation among youths today but greater involvement in "newer" forms of political engagement, although they did not find a striking difference between adult and youth involvement for any type of engagement.
+
+Two in-depth reports on youth unemployment in Europe offer a general perspective into the various forms of exclusion likely to be felt by youth experiencing long-term unemployment. @KieselbachEtAl published a report looking at the mechanisms that lead from unemployment to social exclusion, using interviews with youths in six different European countries as their case studies. @LahusenEtAl took the same approach 15 years later, again using interviews with unemployed youths in six European countries. Both reports focused on several different types of exclusion, and while political exclusion was mentioned and some of the featured interviews highlighted a general detachment from politics and political activities, political engagement was not a major theme throughout either study. 
+
+Thus while there is ample exploration of how youth political participation differs (if at all) from the political participation of adults, as well as if unemployment is related to political disengagement (both generally and among youths), there have been far fewer efforts to compare country-level data on youth unemployment with country-level data on youth political engagement and establish if any trend or connection exists between the two.
 
 ## Research Question ##
 
@@ -19,19 +38,6 @@ Out of this dire situation has arisen some notable political movements like Pode
 Answering these questions is a complicated web of matching internal feelings to external action, plus there is the need to isolate the effects of unemployment from other factors that might encourage or discourage political engagement. Thus, gathering meaningful data and then being able to draw empirically-supported causal conclusions on this topic is not easy. To that end, we do not expect to be able to prove definitively that unemployment does or does not cause youths to engage more politically. But, we hope to at least illustrate how, if at all, the the levels (and types) of political engagement seen among European youth are related to the youth unemplyoment rate.
 
 In summation our working research question is, **"How does the youth unemployment rate in European countries affect the level and type of political engagement among youths in those same countries?"**
-
-
-
-
-## Literature Review ##
-
-The intersection and interaction between youth unemployment and political participation/engagement has been explored to varying degrees. The studies tend to investigate the basic premise that unemployment leads to social exclusion which leads to detachment from politics.
-
-A study of unemployed youth in Geneva [@LorenziniGiugni] found that there was no real difference in the political involvement of unemployed and employed youth when looking at activities like protesting and contacting politicians, though unemployed youth were more likely to partake in consumer-based forms of involvement (e.g., boycotts or buying items with a political motivation). A different study made use of the same data set [@Lorenzini], focusing instead on the role life satisfaction plays in fostering political engagement. It found, somewhat unexpectedly, that among unemployed youth, life dissatisfaction actually decreases political engagement. In both studies, the results offer additional perspective on youth unemployment and political engagement, but the focus is quite narrow, since only youths in one specific European city are included. A study from Baglioni, Pasquale, and Theiss [-@BaglEtAl] suggested that associational membership can have a positive effect on keeping unemployed youths engaged in politics, the idea being that these memberships compensate for the role a normal working environment would have played in fostering political interest and connections.
-
-On the more general subject of youth political participation, Sloam [-@Sloam14] looked at youths in the U.S., Great Britain and Germany. The main theme of his analysis is focusing on the evolution of political participation rather than its decline - it is true that fewer young people turn out in national elections these days, but they are more likely to instead partake in a greater variety of activities like demonstrating, campaigning and otherwise engaging with elected officials. Sloam ackonowledges the role unemployment and general social exclusion play in influencing whether and how youth engage themselves but doesn't offer a sophisticated analysis thereof. @KiiselEtAl took a similar approach, using ESS data to compare responses regarding political and civic participation of both Euroepan youths and adults. Similar to Sloam, they found lower levels of traditional political participation among youths today but greater involvement in "newer" forms of political engagement, although they did not find a striking difference between adult and youth involvement for any type of engagement. 
-
-Thus while there is ample exploration of how youth political participation differs (if at all) from the political participation of adults, as well as if unemployment is related to political disengagement (both generally and among youths), there have been far fewer efforts to compare country-level data on youth unemployment with country-level data on youth political engagement and establish if any trend or connection exists between the two. 
 
 ## Data and Methodology ##
 
@@ -53,12 +59,11 @@ For the other two variables -participation in a lawful public demonstration in t
 # Unemployment in Europe over the years
 
 ```{r, echo = F}
-Unemp0810 <- subset(YouthData, YouthData$TIME==2008 | YouthData$TIME==2010)
+Unemp0810 <- subset(eu, eu$TIME==2008 | eu$TIME==2010)
 
 Unemp0810$TIME <- factor(Unemp0810$TIME) # Ensure year is treated as levels, not as continuous numbers
 
 Unemp0810 <- group_by(Unemp0810, cntry, TIME)
-
 
 Unemp0810$Value <- as.numeric(as.character(Unemp0810$Value)) # Ensure all the unemployment value are numerics 
 
@@ -91,25 +96,179 @@ sjp.grpfrq(ESSData$eisced, ESSData$polintr, show.prc = F, show.n = F,
 
 
 
-
 ## Results ##
 
+Our analysis focuses on how being unemployed affects political engagement of European youth. For this analysis, we use three different variables to guage political engagement: political interest, whether or not an individual voted in the last election, and whether or not an individual has participated in a lawful public demonstration in the last 12 months. 
 
-Impact of unemployment on political interest
+### Political Interest ### 
 
-```{r}
+Political interest is measured on a scale from 1 - 4, with 1 coded "very interested in politics", 2 coded "quite interested", 3 coded "hardly interested", and 4 coded "not al all interested." Non-responses (i.e. refusal, don't know, no answer) were excluded from our analysis. 
+
+In Table 1, we present three different models. Model 1 is a simple bivariate OLS regression looking at how unemployment (coded here as a dummy, with a 1 representing that an individual was unemployed within the last 7 days) affects political interest. Since The effect size is positive and significant, meaning being unemployed lowers a person's political interst (recalling that a value closer to 4 means lower political interest).
+
+Model 2 introduces additional covariates for gender and education. The effect of unemployment on political interest changes only slightly. Meanwhile, being female is likely to lower political interest somewhat by .194 points. The effects for education are as expected: someone with the lowest possible education (lower than secondary education) is likely to have the highest value for political interest and thus the least interest. Meanwhile, someone with an MA (or higher) is likely to be closer to "quite interested in politics".
+
+Model 3 introduces an additional covariate of "Union Membership." This dummy variable is coded 1 if a person is currently a member of a trade union or similar organization, or if a person previously was a member of such an organization. As expected, union membership has a negative effect, meaning someone who is currently or was previously involved in a union is likely to have more political interest than someone who is not.
+
+```{r, echo = F, warning = F, message=F, results = 'asis'}
 m3.1a <- lm(polintr ~ unempdummy, data = ESSData)
 
-m3.1b <- lm(polintr ~ unempdummy + gndr + factor(eisced) - 1 + uniondummy, data = ESSData)
+m3.1b <- lm(polintr ~ unempdummy + gndr + factor(eisced) - 1, data = ESSData)
 
-m3.1c <- lm(polintr ~ unempdummy + gndr + eisced + uniondummy, data = ESSData)
+m3.1c <- lm(polintr ~ unempdummy + gndr + factor(eisced) - 1 + uniondummy, data = ESSData)
 
-m3.1blabels <- c("Unemployment","Gender","Less than secondary","Lower secondary","L. Tier Upper Secondary","U. Tier Upper Secondary","Advanced Vocational","BA","MA")
+m3.1blabels <- c("Unemployment","Gender","Less than secondary","Lower secondary","L. Tier Upper Secondary","U. Tier Upper Secondary","Advanced Vocational","BA","MA or higher","Union Membership")
 
-stargazer::stargazer(m3.1a, m3.1b, m3.1c, covariate.labels = m3.1blabels, type = "html")
-
+stargazer::stargazer(m3.1a, m3.1b, m3.1c, covariate.labels = m3.1blabels, type = "latex", header = F, single.row = T, font.size = 'small')
 
 ```  
+
+In Table 2, a fourth model is presented with a dummy variable generated for each country, in addition to controls for gender, education (treated here as a continuous variable rather than as a factor), and union membership. This model allows us to understand the role that the culture and poltiics specific to a given country might play in influencing the level of political interest among youth. We can see that, in general, all youth veer toward being less interested in politics (a value of 3 or greater), but this lack of interest is certainly more pronounced in some countries than others. In this model, the effect size of unemployment decreases, but it still remains positive and significant. The effect of union membership is no long significant in this model, however.  
+
+```{r, echo = F, warning = F, message=F, results = 'asis'}
+
+m3.1d <- lm(polintr ~ unempdummy + gndr + eisced + uniondummy + factor(cntry) - 1, data = ESSData)
+
+m3.1dlabels <- c("Unemployment", "Gender", "Education", "Union Membership", "BE","BG","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HU","IE","IT","NL","NO","PL","PT","SE","SI","SK")
+
+stargazer::stargazer(m3.1d, covariate.labels = m3.1dlabels, type = "latex", header = F, single.row = T)
+
+```  
+
+The "Comparing Country Coefficients" plot helps visualize the variation in country coefficients. Countries that have tended to have lower youth unemployment rates (like Germany, Denmark, and the Netherlands) are close to the bottom of the plot (representing more interest in politics), and countries that have typically had higher youth unemployment (like Greece and Ireland).
+
+```{r, echo = F}
+
+m3.1dframe <- data.frame(Variable = rownames(summary(m3.1d)$coef), Coefficient = summary(m3.1d)$coef[,1], SE = summary(m3.1d)$coef[,2], modelName = "Country Model")
+
+m3.1dframe <- m3.1dframe[-c(1,2,3,4),]
+
+m3.1dframe$Variable <- c("BE","BG","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HU","IE","IT","NL","NO","PL","PT","SE","SI","SK")
+
+# Specify the width of your confidence intervals
+interval1 <- -qnorm((1-0.9)/2)  # 90% multiplier
+interval2 <- -qnorm((1-0.95)/2)  # 95% multiplier
+
+# Plot
+
+zp1 <- ggplot(m3.1dframe)
+
+zp1 <- zp1 + geom_linerange(aes(x = Variable, ymin = Coefficient - SE*interval1,
+                                ymax = Coefficient + SE*interval1),
+                            lwd = 1, position = position_dodge(width = 1/2))
+zp1 <- zp1 + geom_pointrange(aes(x = Variable, y = Coefficient, ymin = Coefficient - SE*interval2,
+                                 ymax = Coefficient + SE*interval2),
+                             lwd = 1/2, position = position_dodge(width = 1/2),
+                             shape = 21, fill = "WHITE")
+zp1 <- zp1 + ggtitle("Comparing Various Country Coefficients") + 
+  theme(plot.title = element_text(size = 15, hjust = 0.5), 
+        axis.text.x = element_text(face = "bold")) + 
+  labs(x = "Countries") 
+print(zp1)  # The trick to these is position_dodge()
+
+
+
+# Notes:
+
+# Italy - only 2002, 2004 and 2012
+
+```
+
+
+### Voting ###
+
+These models look at the relationship between unemployment and whether or not an individual voted in the last national election. Voting is a dummy variable, coded 1 if an individual did vote in the last election. Our analysis excludes youths who were not eligible to vote during the last election. 
+
+Given that we are interested in whether unemployment makes someone more or less likley to vote, a logistic model is appropriate for this relationship. Table 3 shows three different models: the first simply looks at the relationship between unemployment and voting. The second includes control variables for education, and the third model includes a control for "satisfaction with democracy." This survey question asks respondents how satisfied they are with the way democracy works in their country and is measured on a 0-10 scale, with 0 meaning extremely dissatisfied and 10 meaning extremely satisfied. 
+
+```{r, echo = F, warning = F, message=F, results = 'asis'}
+
+Logit1 <- glm(votedummy ~ unempdummy, data = ESSData, family = 'binomial')
+
+Logit2 <- glm(votedummy ~ unempdummy + gndr + factor(eisced), data = ESSData, family = 'binomial')
+
+Logit3 <- glm(votedummy ~ unempdummy + gndr + factor(eisced) + stfdem, data = ESSData, family = 'binomial')
+
+votelabels <- c("Unemployment","Gender","Lower secondary","L. Tier Upper Secondary","U. Tier Upper Secondary","Advanced Vocational","BA","MA or higher","Satisfaction w/ Democracy","Constant")
+
+
+stargazer::stargazer(Logit1, Logit2, Logit3, covariate.labels = votelabels, type = "latex", header = F, single.row = T, font.size = 'small')
+
+
+```
+
+Throughout the three models, the effect of unemployment on the likelihood that someone will vote remains negative and highly significant, though since this is a logt model, we cannot directly interpret the effect size. We can however calculate odds ratios for based on the coefficients:
+
+**Table 3, Model 1:**
+```{r, warning=F, message=F, echo=F}
+
+exp(cbind(OddsRatio = coef(Logit1), confint(Logit1)))
+
+```
+
+**Table 3, Model 2:**
+
+```{r, warning=F, message=F, echo=F}
+
+exp(cbind(OddsRatio = coef(Logit2), confint(Logit2)))
+
+```
+
+**Table 3, Model 3:**
+
+```{r, warning=F, message=F, echo=F}
+
+exp(cbind(OddsRatio = coef(Logit3), confint(Logit3)))
+
+```
+
+The odds ratios indicate to us that being unemployed makes the odds of voting .645, .725 and .788 times as high than if a person were employed (respective to each of the three models) -- meaning, you are less likely to vote if you are unemployed, even with factors like gender, education and satisfaction with democracy held constant. 
+
+### Public Demonstrations ###
+
+The last set of models looks at the relationship between unemployment and participation in public demonstrations. Participatin in public demonstrations is a dummy variable that is coded 1 if the respondent has participated in a lawful public demonstration in the last 12 months. Since we are again looking at if unemployment makes it more or less likely that a youtng person participates in a public demonstation, we use logit models to explore the effect. 
+
+```{r, echo = F, warning = F, message=F, results = 'asis'}
+
+Logit4 <- glm(pbldmndummy ~ unempdummy, data = ESSData, family = 'binomial')
+
+Logit5 <- glm(pbldmndummy ~ unempdummy + gndr + factor(eisced), data = ESSData, family = 'binomial')
+
+Logit6 <- glm(pbldmndummy ~ unempdummy + gndr + factor(eisced) + stfdem, data = ESSData, family = 'binomial')
+
+pbldmnlabels <- c("Unemployment","Gender","Lower secondary","L. Tier Upper Secondary","U. Tier Upper Secondary","Advanced Vocational","BA","MA or higher","Satisfaction w/ Democracy","Constant")
+
+stargazer::stargazer(Logit4, Logit5, Logit6, covariate.labels = pbldmnlabels, type = "latex", header = F, single.row = T, font.size = 'small')
+
+
+```
+
+In all three models, the effect of being unemployed is significant and negative, meaning being unemployed makes you less likely to participate in a public demonstration, even when factors like gender, education and satisfaction with democracy are held constant. Here are the odds ratios to make the effect sizes clearer:
+
+**Table 4, Model 1:**
+```{r, warning=F, message=F, echo=F}
+
+exp(cbind(OddsRatio = coef(Logit4), confint(Logit4)))
+
+```
+
+**Table 4, Model 2:**
+
+```{r, warning=F, message=F, echo=F}
+
+exp(cbind(OddsRatio = coef(Logit5), confint(Logit5)))
+
+```
+
+**Table 4, Model 3:**
+
+```{r, warning=F, message=F, echo=F}
+
+exp(cbind(OddsRatio = coef(Logit6), confint(Logit6)))
+
+```
+
+The odds indicate that being unemployed makes the odds a young person would participate in a public demonstration .804, .838 and .854 as high than if the young person were employed. This means you are less likely to participate in public demonstrations as an unemployed young person than as an employed young person. 
 
 ## Conclusion ##
 
