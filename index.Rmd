@@ -1,22 +1,64 @@
 ---
-title: "index"
-author: "Tori Dykes"
+title: "Youth Unemployment and Political Engagement"
+author: "Tori Dykes & Mansi Wadhwa"
 date: "12/15/2016"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r, echo=F, warning=F, message=F}
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+source('datacleaningpaper.R')
 
-```{r}
-summary(cars)
+library(plotly)
+library(dplyr)
+
 ```
 
-You can also embed plots, for example:
+## Introduction ##
 
-```{r, echo=FALSE}
-plot(cars)
+Our research project looks at the relationship between youth unemployment and youth political engagement. We are interested in learning whether being unemployed make young people more politically aware and involved, or does it make them care less about politics and withdraw from political activities?
+
+## Context ##
+
+In the early 2000s, a global financial crisis slowly began to build, reaching a peak in 2008 and 2009. One of the most striking signs of this economic downturn was the increase in youth unemployment rates seen in many European countries. Nearly all European countries were affected, and many saw double-digit increases in their youth unemployment rates. 
+
+In this context, some powerful protest movements began to emerge that made the issue of unemployment -- and especially youth unemployment -- a main focus. Southern European countries, which were some of the hardest-hit by the financial crisis, gave birth to some of the most famous movements, like Podemos in Spain and Syriza in Greece (Syriza existed prior to the 2008 - 2009 crisis but its profile increased signficantly afterward).
+
+In the below graph, you can compare youth unemployment rates for 22 different European countries to see just how much the numbers changed from 2008 to 2010. The values measured are the percent of the active population (i.e., individuals who are part of the labor force) that is unemployed. 
+
+```{r, results = 'asis', echo=F, warning=F, message=F}
+
+Unemp0810 <- subset(eu, eu$TIME==2008 | eu$TIME==2010)
+
+names(Unemp0810) <- c("TIME", "GEO", "AGE", "UNIT", "SEX", "Unemp.Rate", "Flag.and.Footnotes", "Country")
+
+Unemp0810$TIME <- factor(Unemp0810$TIME) # Ensure year is treated as levels, not as continuous numbers
+
+Unemp0810 <- group_by(Unemp0810, Country, TIME)
+
+Unemp0810$Unemp.Rate <- as.numeric(as.character(Unemp0810$Unemp.Rate)) # Ensure all the unemployment value are numerics 
+
+Unemp0810graph <- ggplot(data=Unemp0810, aes(x=Country, y=Unemp.Rate, fill=TIME)) + geom_bar(stat="identity", position=position_dodge()) + labs(x="Country", y="Unemployment Rate (% of active population)") + ggtitle("Youth Unemployment Rates in Europe, 2008 - 2010") + guides(fill = guide_legend(title = "Year"))
+
+ggplotly(Unemp0810graph)
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Political Engagement Data ##
+
+To look at the relationship between youth unemployment and youth political engagement, we relied on data from the European Social Survey, which is a representative survey of individuals in European countries that is conducted every two years, starting in 2002. Respondents are asked a variety of questions to guage their attitudes and perspectives on topics like politics, media, social issues, etc. Respondents are also asked a variety of demographic information, such as their age, sex, and employment status. 
+
+The below graph gives a window into one of the ESS measures of political engagement, which is an idividual's level of political interest. This is measured on 1 to 4 scale, with 1 representing "very interested" in politics and 4 representing "not at all interested" in politics. The values in the graphs are the averages of the responses for all youths in a given country in a given year.  
+
+```{r, echo = F, warning = F, message = F}
+comparepolintr <- subset(YouthData, YouthData$cntry == "DE"|YouthData$cntry == "DK"|YouthData$cntry == "ES"|YouthData$cntry == "FR"|YouthData$cntry == "HU"|YouthData$cntry == "IE"|YouthData$cntry == "NL")
+
+polintrplot <- ggplot(data = comparepolintr, aes(x=TIME, y=avgpolintr)) + geom_line(aes(colour=cntry)) + scale_x_continuous(breaks = c(2002, 2004, 2006, 2008, 2010, 2012), labels=c("2002","2004","2006","2008","2010","2012"), limits = c(2002,2012)) + labs(x="Years", y="Average Political Interest", color = "Countries") + ggtitle("Average Political Interest for Youth (Select Countries)") + guides(fill = guide_legend(title = "Countries"))
+
+ggplotly(polintrplot)
+
+```
+
+
+## Data Sources ##
