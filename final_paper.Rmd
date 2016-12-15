@@ -16,6 +16,9 @@ source("datacleaningpaper.R")
 
 ## Introduction ##
 
+High unemployment among the youth can have significant political and social effects. In this paper, we analyse the impact of youth unemployment on youth political engagement in the European Union using three different dimensions of a person's engagement with the political process. Multivariate linear and logistical regression modelling is employed for this analysis. We show that being unemployed lowers a young person's self-reported level of political interest, has a negative effect on the likelihood of a young person going to vote and makes a young person less likely to participate in a public demonstration. It was also found that those with higher levels of education engage with the political process less on all three dimensions. 
+
+
 
 ## Literature Review ##
 
@@ -48,13 +51,20 @@ Our data takes the form of a panel with each country being a cross-sectional uni
 For our analysis of the relationship between youth unemployment and the political engagement of the youth, we make use of multiple variables that reflect different aspects of an individual's political engagement - political interest, participation in the political process, trust in political infrastructure etc.
 Regression analysis is employed to look at the impact of unemployment on three dimensions of political engagements namely political interest (polintr), participation in public demonstration (pbldmn) and voting(vote). Using multivariate regression, we analyse the impact of unemployment status of an individual on his/her level of political interest, controlling for gender, education levels and association with trade union(s). The gradation in the impact of different education levels (ranging from less than lower secondary to MA level) is also estimated. 
 
-For the other two variables -participation in a lawful public demonstration in the last 12 months(pbldmn) and voting in last national election (vote) - logistic regression is undertaken as both of them are dichotomous variables carrying values 0 and 1. Controls include......
+
+
+For the other two variables -participation in a lawful public demonstration in the last 12 months(pbldmn) and voting in last national election (vote) - logistic regression is undertaken as both of them are dichotomous variables carrying values 0 and 1. Demographic characeterisitics (gender and education levels) are controlled for in these models. A control for a measure of satisfaction with democracy is also included to evaluate the impact of individual and subjective attiudes towards political processes in a democracy. 
 
 - Equations for the different models here -
 
 
 
 ## Descriptive Statistics ##
+
+The following illustrations depict the trends in the data and provide the bigger picture. 
+
+The figure below compares the unemployment rates of different European countries in 2008 and 2010. Most countries experienced an increase in unemployment from 2008 to 2010 although the increase was larger for some than for others. In particular, unemployment levels in Estonia, Spain, Ireland, Greece and Slovakia shot up more drastically in this time period. 
+
 
 # Unemployment in Europe over the years
 
@@ -71,13 +81,24 @@ ggplot(data=Unemp0810, aes(x=cntry, y=Value, fill=TIME)) + geom_bar(stat="identi
 
 ```
 
+
+
 # Trends in Political Interest Across Countries 
 
 ```{r, echo = F, warning = F, message = F}
 compare <- subset(YouthData, YouthData$cntry == "DE"|YouthData$cntry == "DK"|YouthData$cntry == "ES"|YouthData$cntry == "FR"|YouthData$cntry == "HU"|YouthData$cntry == "IE"|YouthData$cntry == "NL")
 
-ggplot(data = compare, aes(x=TIME, y=avgpolintr)) + geom_line(aes(colour=cntry)) + scale_x_continuous(name="Years", breaks = c(2002, 2004, 2006, 2008, 2010, 2012),labels=c("2002","2004","2006","2008","2010","2012"), limits = c(2002,2012))
+ggplot(data = compare, aes(x=TIME, y=avgpolintr)) + geom_line(aes(colour=cntry)) + scale_x_continuous(name="Years", breaks = c(2002, 2004, 2006, 2008, 2010, 2012, 2014),labels=c("2002","2004","2006","2008","2010","2012", "2014"), limits = c(2002,2014)) + labs(x="Years", y="Average political interest") + ggtitle("Political interest over the years, 2002 - 2014")
+
 ```
+
+There is immense diversity with regard to the levels of Political interest within the European Union as is evident from the graph below that shows trends in political interest in 7 European countries from 2002 to 2014. The countries depicted are Germany, Denmark, Spain, France, HUngary, Ireland and the Netherlands. One can observe that the levels of political interest on average for individual countries varried considerably at the beginning of our analysis period in 2002 itself with Denmark and the Netherlands exhibiting higher average political interest in comparison to Spain or Hungary. It must be noted that the variable political interest is coded from 1 to 4 with 1 representing "very interested" and 4 being "Not interested at all". Two broad trends can be seen in the graph. 
+
+Firstly, some countries experience a siginificant decrease in average political interest levels between 2008 to 2010 (Germany, Denmark, France, Ireland) followed by an increase between 2010 and 2012. It is possible that increase in youth unemployment may have lead to apathy resulting in the initial decrease in political interest levels in these countries. The consequent resurgence in political interest levels after 2010 may signal the channelling of youth anxiety towards political ends. From 2012 until 2014, we can again see that political interest again falls or stays stable in this group of countries with the exception of France, where it continues to increase further until 2014. 
+
+Secondly, Hungary and Netherlands show a small increase in political interest between 2008 and 2010. However, post 2010, we can see that the level of political interest staggers and persistently falls. Spain appears to be a particularly interesting case as after relative stability of political interest levels in 2008 to 2010, they continue on a steady growth path. 
+
+
 
 # Trends in Political Interest Across Education Levels 
 
@@ -93,6 +114,8 @@ sjp.grpfrq(ESSData$eisced, ESSData$polintr, show.prc = F, show.n = F,
            title = c("Distribution of Political Interest by Educational Level"))
 
 ```
+
+The graph shows the variation in political interest within the diffrent education levels.The proportion of respondents showing relatively lower levels of political interest (3 and 4) decreases as the level of education increases beyond the secondary levels, thus indicating that those who have attained higher education show lesser political interest. We can also see that maximum number of subjects of our analysis have attained education until Upper Tier Upper Secondary level given that we are restricting our analysis to those between 18 and 25 years of age.   
 
 
 

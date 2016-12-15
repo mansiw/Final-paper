@@ -115,6 +115,7 @@ ESSData$TIME[ESSData$essround == 3] <- 2006
 ESSData$TIME[ESSData$essround == 4] <- 2008
 ESSData$TIME[ESSData$essround == 5] <- 2010
 ESSData$TIME[ESSData$essround == 6] <- 2012
+ESSData$TIME[ESSData$essround == 7] <- 2014
 
 ## Add country code to unemployment data country names for merging ##
 
