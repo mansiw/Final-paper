@@ -77,8 +77,6 @@ table(ESSData$cntry)
 
 table(ESSData$polintr) # want to drop any response greater than 4
 
-#ESSData <- subset(ESSData, ESSData$polintr <= 4 & ESSData$trstprl <=10 & ESSData$trstplt <=10 & ESSData$trstep <=10 & ESSData$vote <=3 & ESSData$contplt <=2 & ESSData$wrkprty <= 2 & ESSData$badge <=2 & ESSData$sgnptit <= 2 & ESSData$pbldmn <= 2 & ESSData$bctprd <= 2 & ESSData$clsprty <=2 & ESSData$edulvla > 0 & ESSData$edulvla < 55 & ESSData$mbtru <= 3 & ESSData$pdjobev <= 2 & ESSData$gndr <= 2 )
-
 table(ESSData$polintr)
 
 ESSData$polintr[ESSData$polintr > 4] <- NA
@@ -279,4 +277,5 @@ fitted
 fitted$predicted <- predict(Logit1, newdata = fitted, type = 'response')
 
 m3.1c <- lm(lm(polintr ~ unempdummy + gndr + factor(cntry) - 1, data = ESSData))
+
 

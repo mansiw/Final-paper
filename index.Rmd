@@ -60,5 +60,47 @@ ggplotly(polintrplot)
 
 ```
 
+Box Plot to show Unemployment vs. Employment
 
+```{r, warning=F, message=F, echo=F, results = 'asis'}
+
+# Create dataframe of complete cases only
+
+completepolintr <- subset(ESSData, complete.cases(ESSData$polintr, ESSData$unempdummy, ESSData$eisced))
+
+lmpolintr2 <- lm(polintr ~ unempdummy + factor(eisced), data = completepolintr)
+
+# Create dataframe with fitted values
+
+fittedpolintr <- data.frame(Unemployed = completepolintr$unempdummy, Education = completepolintr$eisced, Fitted = fitted(lmpolintr2))
+
+fittedpolintr$Fitted <- as.numeric(as.character(fittedpolintr$Fitted))
+
+# Remove duplicate rows
+
+fittedpolintr2 <- unique(fittedpolintr) # some duplicate rows persist...
+
+# Manually remove remaining rows...
+
+fittedpolintr2 <- fittedpolintr2[order(fittedpolintr2$Education),] 
+
+rownames(fittedpolintr2) <- 1:nrow(fittedpolintr2)
+
+fittedpolintr2 <- fittedpolintr2[c(1,2,4,8,9,10,11,12,17,18,20,22,23,24),]
+
+# Set to factor
+
+fittedpolintr2$Unemployed <- factor(fittedpolintr2$Unemployed)
+
+fittedpolintr2$Education <- factor(fittedpolintr2$Education)
+
+
+# Create Graph
+
+FittedPolIntrPlot <- ggplot(data=fittedpolintr2, aes(x=Education, y=Fitted, fill=Unemployed)) + geom_bar(stat="identity", position=position_dodge()) + labs(x="Education", y="Predicted Level of Political Interest") + ggtitle("Predicted Level of Political Interest") + guides(fill = guide_legend(title = "Employment Status"))
+
+ggplotly(FittedPolIntrPlot)
+
+
+```
 ## Data Sources ##
