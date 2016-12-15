@@ -14,9 +14,34 @@ source("datacleaningpaper.R")
 
 ## Table of Contents ##
 
+1. Introduction
+
+2. Literature Review
+
+3. Research Question
+
+4. Data and Methodology
+
+5. Descriptive Statistics
+  + Unemployment in Europe over the years
+  + Trends in political interest across countries
+  + Trends in Political interest across education levels
+  
+6. Results
+  + Dimension 1: Political interest
+  + Dimension 2: Voting
+  + Dimension 3: Public demonstrations
+  
+7. Conclusion
+
+8. Bibliography
+
+
+
+
 ## Introduction ##
 
-High unemployment among the youth can have significant political and social effects. In this paper, we analyse the impact of youth unemployment on youth political engagement in the European Union using three different dimensions of a person's engagement with the political process. Multivariate linear and logistical regression modelling is employed for this analysis. We show that being unemployed lowers a young person's self-reported level of political interest, has a negative effect on the likelihood of a young person going to vote and makes a young person less likely to participate in a public demonstration. It was also found that those with higher levels of education engage with the political process less on all three dimensions. 
+High unemployment among the youth can have significant political and social effects. Europe has been grappling with the problem of youth unemployment for a while now, particularly after the financial crisis of 2008. The concerns of the youth and the issue of youth unemployment have also led to a considerable degree of political mobilization since 2008. In this paper, we attempt to understand if unemployment leads to exclusion and political apathy among the youth or if it spurs them towards enhanced pro-active participation in the political process. Given the tremendous diversity of economic and political experiences at the national-level in the EU, we try to dissociate and specify the effect on each country. We analyse the impact of youth unemployment on youth political engagement in the European Union using three different dimensions of a person's engagement with the political process. Multivariate linear and logistical regression modelling is employed for this analysis. We show that being unemployed lowers a young person's self-reported level of political interest, has a negative effect on the likelihood of a young person going to vote and makes a young person less likely to participate in a public demonstration. It was also found that those with higher levels of education engage with the political process less on all three dimensions. 
 
 
 
