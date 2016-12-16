@@ -141,7 +141,7 @@ Looking at a different measure of political engagement, we also looked at whethe
 
 voting <- glm(votedummy ~ unempdummy + gndr + factor(eisced) + stfdem, data = ESSData, family = 'binomial')
 
-votingplot <- ggplot(ESSData, aes(x=unempdummy, y=votedummy)) + geom_point(shape=1, position=position_jitter(width=.0001,height=.0001)) + scale_x_continuous(breaks = c(0,1)) + stat_smooth(method="glm", method.args=list(family="binomial"), se=FALSE) + labs(x="Employment Status (0 or 1)", y="Likelihood of voting") + ggtitle("Effect of Unemployment on Voting Behaviour")
+votingplot <- ggplot(ESSData, aes(x=unempdummy, y=votedummy)) + geom_point(shape=1, position=position_jitter(width=.0001,height=.0001)) + scale_x_continuous(breaks = c(0,1)) + stat_smooth(method="glm", method.args=list(family="binomial"), se=FALSE) + labs(x="Employment Status (Employed or Unemployed)", y="Likelihood of voting") + ggtitle("Effect of Unemployment on Voting Behaviour")
 
 ggplotly(votingplot)
 
