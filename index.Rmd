@@ -2,7 +2,12 @@
 title: "Youth Unemployment and Political Engagement"
 author: "Tori Dykes & Mansi Wadhwa"
 date: "12/15/2016"
-output: html_document
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+
 ---
 
 ```{r, echo=F, warning=F, message=F}
