@@ -6,7 +6,7 @@ output:
   pdf_document:
     toc: true
     toc_depth: 3
-    bibliography: bibliography.bib
+bibliography: bibliography.bib
 ---
 
 ```{r, echo = F, warning=F, message=F}

@@ -15,7 +15,8 @@ library(sjPlot)
 
 ## Loading the Data ##
 
-setwd('/Users/toridykes1/GitHub/Final-paper/Data')
+## setwd('/Users/toridykes1/GitHub/Final-paper/Data')
+setwd('C:/Users/hp/Documents/GitHub/Final-paper/Data')
 
 d <- read.csv('ESS1-7e01.csv') # ESS Data on Political Engagement
 e <- read.csv('Under 25 unemp.csv', stringsAsFactors = F) # Eurostat Data on Unemployment
