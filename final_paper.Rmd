@@ -2,7 +2,10 @@
 title: "Final paper"
 author: "Mansi Wadhwa & Tori Dykes"
 date: "Friday, December 09, 2016"
-output: pdf_document
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 3
 bibliography: bibliography.bib
 ---
 
@@ -41,7 +44,7 @@ source("datacleaningpaper.R")
 
 ## Introduction ##
 
-High unemployment among the youth can have significant political and social effects. Europe has been grappling with the problem of youth unemployment for a while now, particularly after the financial crisis of 2008. The issue of youth unemployment has also led to a considerable degree of political mobilization in national-level politics since 2008. Yet, concerns about the long-lasting impact of extended periods of unemployment on the political stability and social harmony of future societies persist. In this paper, we attempt to understand if unemployment leads to exclusion and political apathy among the youth or if it spurs them towards enhanced pro-active participation in the political process. We analyse the impact of youth unemployment on youth political engagement in the European Union using three different dimensions of a person's engagement with the political process, namely political interest, voting and participation in public demonstrations. Multivariate linear and logistical regression modelling is employed for this analysis. Given the tremendous diversity of economic and political experiences at the national-level in the EU, we try to dissociate and outline country-specific effects of unemployment on political interest. 
+High unemployment among youth can have significant political and social effects. Europe has been grappling with the problem of youth unemployment for a while now, particularly after the financial crisis of 2008. The issue of youth unemployment has also led to a considerable degree of political mobilization in national-level politics since 2008, with some high-profile examples being the emergence of the Podemos political party in Spain and the increase in popularity and subsequent consolidation of the Syriza party in Greece. Yet, concerns about the long-lasting impact of extended periods of unemployment on the political stability and social harmony of future societies persist. In this paper, we attempt to understand if unemployment leads to exclusion and political apathy among the youth or if it spurs them towards enhanced pro-active participation in the political process. We analyse the impact of youth unemployment on youth political engagement in the European Union using three different dimensions of a person's engagement with the political process, namely political interest, voting and participation in public demonstrations. Multivariate linear and logistical regression modelling is employed for this analysis. Given the tremendous diversity of economic and political experiences at the national-level in the EU, we try to dissociate and outline country-specific effects of unemployment on political interest. 
 
 
 ## Literature Review ##
@@ -112,7 +115,7 @@ The following illustrations depict the trends in the data and provide the bigger
 The figure below compares the unemployment rates of different European countries in 2008 and 2010. Most countries experienced an increase in unemployment from 2008 to 2010 although the increase was larger for some than for others. In particular, unemployment levels in Estonia, Spain, Ireland, Greece and Slovakia shot up more drastically in this time period. 
 
 
-# Unemployment in Europe over the years
+### Unemployment in Europe over the years ###
 
 ```{r, echo = F}
 Unemp0810 <- subset(eu, eu$TIME==2008 | eu$TIME==2010)
@@ -129,7 +132,7 @@ ggplot(data=Unemp0810, aes(x=cntry, y=Value, fill=TIME)) + geom_bar(stat="identi
 
 
 
-# Trends in Political Interest Across Countries 
+### Trends in Political Interest Across Countries ###
 
 ```{r, echo = F, warning = F, message = F}
 compare <- subset(YouthData, YouthData$cntry == "DE"|YouthData$cntry == "DK"|YouthData$cntry == "ES"|YouthData$cntry == "FR"|YouthData$cntry == "HU"|YouthData$cntry == "IE"|YouthData$cntry == "NL")
@@ -146,7 +149,7 @@ Secondly, Hungary and Netherlands show a small increase in political interest be
 
 
 
-# Trends in Political Interest Across Education Levels 
+### Trends in Political Interest Across Education Levels ###
 
 ```{r, echo = F}
 
