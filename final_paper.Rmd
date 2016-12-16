@@ -55,13 +55,13 @@ The effect of unemployment status on political interest can be evaluated as:
 
 $$polintr = \alpha + \beta_1 unemp + \beta_2 gender + \beta_3 E'_i + \beta_4 union + \epsilon$$
 
-where polintr is the variable for political interest, unemp is the unemployment dummy, gender is the dummy for male or female respondent, E' is the vector of dummies for each level of education, union is the dummy for union membership and $$\alpha$$ stands for the constant.
+where polintr is the variable for political interest, unemp is the unemployment dummy, gender is the dummy for male or female respondent, E' is the vector of dummies for each level of education, union is the dummy for union membership and $\alpha$ stands for the constant.
 
 To take into account the diversity of experiences across different European countries, we evaluate the country-specific effects.
 
 $$polintr = \alpha + \beta_1 unemp + \beta_2 gender + \beta_3 educ + \beta_4 union + \beta_5 C'_j + \epsilon$$
 
-where $$C'_j$$ represents the individual country dummies. 
+where $C'_j$ represents the individual country dummies. 
 
 For the other two variables - participation in a lawful public demonstration in the last 12 months (pbldmn) and voting in last national election (vote) -- logistic regression is undertaken as both of them are dichotomous variables carrying values 0 and 1. Demographic characteristics (gender and education levels) are controlled for in these models. A control for a measure of satisfaction with democracy is also included to evaluate the impact of individual and subjective attitudes towards political processes in a democracy. 
 
@@ -74,7 +74,7 @@ The likelihood of pariticipation in a lawful public demonstration can be predict
 
 $$pubdem = \alpha + \beta_1 unemp + \beta_2 gender + \beta_3 E'_i + \beta_4 satis_demo + \epsilon$$
 
-where unemp is the unemployment dummy, gender is the dummy for male or female respondent, E' is the vector of dummies for each level of education, satis_demo is a variable capturing the level of satisfaction with the way democracy works in the respondent's country (0 = extremely dissatisfied; 10 = extremely satisfied) and $$\alpha$$ stands for the constant.
+where unemp is the unemployment dummy, gender is the dummy for male or female respondent, E' is the vector of dummies for each level of education, satis_demo is a variable capturing the level of satisfaction with the way democracy works in the respondent's country (0 = extremely dissatisfied; 10 = extremely satisfied) and $\alpha$ stands for the constant.
 
 ## Descriptive Statistics ##
 
