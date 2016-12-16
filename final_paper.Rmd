@@ -317,5 +317,11 @@ We find a significant effect of unemployment status on all three dimensions of p
 
 In all, we can say that the state of unemployment and the level of education have a real, demonstrable effect on an individual's level of political engagement. The result indicates that apart from being an economic problem, youth unemployment affects the fundamental ethos of a democratic society by adversely affecting the level of political engagement of the youth. 
 
+## Data Sources ##
+
+- European Social Survey, Rounds 1 - 7 (2002 - 2014). Full dataset available for download here: http://www.europeansocialsurvey.org/downloadwizard/
+
+- Eurostat, Unemployment by sex and age -- annual average (2006 - 2015). Full dataset available for viewing and downloading here: http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=une_rt_a&lang=en
+
 ## Bibliography ##
 
