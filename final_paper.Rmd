@@ -38,7 +38,7 @@ The recession of 2008 hit all of Europe, but not all were equally affected. Germ
 
 Out of this dire situation has arisen some notable political movements like Podemos in Spain and Syriza in Greece that feature youth support as a key pillar and the issue of unemployment as a key issue. Though the actual political efficacy of these parties can be debated, the rise of these movements raises questions about whether the frustration and desperation of unemployment (especially long-term unemployment) translates into political action or apathy. Do young people looking for work tend to feel abandoned by their government and choose to withdraw and detach from political activities? Or do they channel this frustration into a desire to change the system that by some accounts has failed them? 
 
-Answering these questions is a complicated web of matching internal feelings to external action, plus there is the need to isolate the effects of unemployment from other factors that might encourage or discourage political engagement. Thus, gathering meaningful data and then being able to draw empirically-supported causal conclusions on this topic is not easy. To that end, we do not expect to be able to prove definitively that unemployment does or does not cause youths to engage more politically. But, we hope to at least illustrate how, if at all, the the levels (and types) of political engagement seen among European youth are related to the youth unemployment rate.
+Answering these questions is a complicated web of matching internal feelings to external action, plus there is the need to isolate the effects of unemployment from other factors that might encourage or discourage political engagement. Thus, gathering meaningful data and then being able to draw empirically-supported causal conclusions on this topic is not easy. To that end, we do not expect to be able to prove definitively that unemployment does or does not cause youths to engage more politically. But, we hope to at least illustrate how, if at all, the levels (and types) of political engagement seen among European youth are related to the youth unemployment conditions.
 
 In summation our working research question is, **"How does unemployment among European youth affect the level and type of their political engagement?"**
 
@@ -49,21 +49,21 @@ The data for this paper is from the European Social Survey (ESS) which is a repr
 Our data takes the form of a panel with each country being a cross-sectional unit. The time period covered is from 2002 to 2014 at an interval of 2 years as per the format of the ESS. We limit our analysis to individuals between 18 and 25 years of age and subset the data accordingly. An extensive cleaning process had to be undertaken to make the data ready for analysis as per our requirements. Countries outside of Europe and those with not enough survey round data had to be dropped. The variables were limited to exclude the non-responses. 
 
 For our analysis of the relationship between youth unemployment and the political engagement of the youth, we make use of multiple variables that reflect different aspects of an individual's political engagement - political interest, participation in the political process, trust in political infrastructure etc.
-Regression analysis is employed to look at the impact of unemployment on three dimensions of political engagements namely political interest (polintr), participation in public demonstration (pbldmn) and voting (vote). Using multivariate regression, we analyse the impact of unemployment status of an individual on his/her level of political interest, controlling for gender, education levels and association with trade union(s). The gradation in the impact of different education levels (ranging from less than lower secondary to MA level) is also estimated. 
+Regression analysis is employed to look at the impact of unemployment on three dimensions of political engagements namely political interest (*polintr*), participation in public demonstration (*pbldmn*) and voting (*vote*). Using multivariate regression, we analyse the impact of unemployment status of an individual on his/her level of political interest, controlling for gender, education levels and association with trade union(s). The gradation in the impact of different education levels (ranging from less than lower secondary to MA level) is also estimated. 
 
 The effect of unemployment status on political interest can be evaluated as:
 
 $$polintr = \alpha + \beta_1 unemp + \beta_2 gender + \beta_3 E'_i + \beta_4 union + \epsilon$$
 
-where polintr is the variable for political interest, unemp is the unemployment dummy, gender is the dummy for male or female respondent, E' is the vector of dummies for each level of education, union is the dummy for union membership and $\alpha$ stands for the constant.
+where *polintr* is the variable for political interest, *unemp* is the unemployment dummy, *gender* is the dummy for male or female respondent, *E'_i* is the vector of dummies for each level of education, union is the dummy for union membership and $\alpha$ stands for the constant.
 
 To take into account the diversity of experiences across different European countries, we evaluate the country-specific effects.
 
 $$polintr = \alpha + \beta_1 unemp + \beta_2 gender + \beta_3 educ + \beta_4 union + \beta_5 C'_j + \epsilon$$
 
-where $C'_j$ represents the individual country dummies. 
+where $C'_j$ represents the individual country dummies, *educ* is the variable for different levels of education (coded as 1 to 7 with 1 being less than secondary education and 7 being the equivalent of a Masters degree). 
 
-For the other two variables - participation in a lawful public demonstration in the last 12 months (pbldmn) and voting in last national election (vote) -- logistic regression is undertaken as both of them are dichotomous variables carrying values 0 and 1. Demographic characteristics (gender and education levels) are controlled for in these models. A control for a measure of satisfaction with democracy is also included to evaluate the impact of individual and subjective attitudes towards political processes in a democracy. 
+For the other two variables, participation in a lawful public demonstration in the last 12 months (*pbldmn*) and voting in last national election (*vote*), logistic regression is undertaken as both of them are dichotomous variables carrying values 0 and 1. Demographic characteristics (gender and education levels) are controlled for in these models. A control for a measure of satisfaction with democracy is also included to evaluate the impact of individual and subjective attitudes towards political processes in a democracy. 
 
 The likelihood of an individual voting can be predicted as:
 
@@ -74,7 +74,7 @@ The likelihood of pariticipation in a lawful public demonstration can be predict
 
 $$pubdem = \alpha + \beta_1 unemp + \beta_2 gender + \beta_3 E'_i + \beta_4 satis_demo + \epsilon$$
 
-where unemp is the unemployment dummy, gender is the dummy for male or female respondent, E' is the vector of dummies for each level of education, satis_demo is a variable capturing the level of satisfaction with the way democracy works in the respondent's country (0 = extremely dissatisfied; 10 = extremely satisfied) and $\alpha$ stands for the constant.
+where *unemp* is the unemployment dummy, *gender* is the dummy for male or female respondent, *E'_i* is the vector of dummies for each level of education, *satis_demo* is a variable capturing the level of satisfaction with the way democracy works in the respondent's country (0 = extremely dissatisfied; 10 = extremely satisfied) and $\alpha$ stands for the constant.
 
 ## Descriptive Statistics ##
 
@@ -145,7 +145,7 @@ In Table 1, we present three different models. Model 1 is a simple bivariate OLS
 
 Model 2 introduces additional covariates for gender and education. The effect of unemployment on political interest changes only slightly. Meanwhile, being female is likely to lower political interest somewhat by .194 points. The effects for education are as expected: someone with the lowest possible education (lower than secondary education) is likely to have the highest value for political interest and thus the least interest. Meanwhile, someone with an MA (or higher) is likely to be closer to "quite interested in politics", particularly if they are employed.
 
-Model 3 introduces an additional covariate of "Union Membership." This dummy variable is coded 1 if a person is currently a member of a trade union or similar organization, or if a person previously was a member of such an organization. As expected, union membership has a negative effect, meaning someone who is currently or was previously involved in a union is likely to have more political interest than someone who is not.
+Model 3 introduces an additional covariate of "Union Membership." This dummy variable is coded 1 if a person is currently associated or was previously associated with a trade union or similar organization. As expected, union membership has a negative effect, meaning someone who is currently or was previously involved in a union is likely to have more political interest than someone who is not.
 
 ```{r, echo = F, warning = F, message=F, results = 'asis'}
 m3.1a <- lm(polintr ~ unempdummy, data = ESSData)
@@ -172,7 +172,7 @@ stargazer::stargazer(m3.1d, covariate.labels = m3.1dlabels, type = "latex", head
 
 ```  
 
-The "Comparing Country Coefficients" plot helps visualize the variation in country coefficients. Countries that have tended to have lower youth unemployment rates (like Germany, Denmark, and the Netherlands) are close to the bottom of the plot, which implies that they have higher baseline levels of political interest as compared to countries with higher youth unemployment rates, who exhibit lower baseline political interest. 
+As socio-economic situations and political infrastructure of different countries in the EU are incredibly diverse, their experience with unemployment is also varied. This plot below helps visualize the country-specific impact of unemployment on political interest. Countries that have tended to have lower youth unemployment rates (like Germany, Denmark, and the Netherlands) are close to the bottom of the plot, which implies that they have higher baseline levels of political interest as compared to countries with higher youth unemployment rates, who exhibit lower baseline political interest. 
 
 
 ```{r, echo = F}
@@ -198,7 +198,7 @@ zp1 <- zp1 + geom_pointrange(aes(x = Variable, y = Coefficient, ymin = Coefficie
                                  ymax = Coefficient + SE*interval2),
                              lwd = 1/2, position = position_dodge(width = 1/2),
                              shape = 21, fill = "WHITE")
-zp1 <- zp1 + ggtitle("Comparing Various Country Coefficients") + 
+zp1 <- zp1 + ggtitle("Comparing country-specific effects") + 
   theme(plot.title = element_text(size = 15, hjust = 0.5), 
         axis.text.x = element_text(face = "bold")) + 
   labs(x = "Countries") 
@@ -313,7 +313,7 @@ The odds indicate that being unemployed makes the odds a young person would part
 
 ## Conclusion ##
 
-We find a significant effect of unemployment status on all three dimensions of political engagement considered. We show that being unemployed lowers a young person's self-reported level of political interest, has a negative effect on the likelihood of a young person going to vote and makes a young person less likely to participate in a public demonstration. It was also found that an individual's level of education positively affects his/her political engagement on all three dimensions, i.e. those with higher levels of education exhibit a greater tendency to engage with the political process. The impact of unemployment on political interest is shown to be greater for countries with higher levels of unemployment than for those with lower levels. 
+We find a significant effect of unemployment status on all three dimensions of political engagement considered. We show that being unemployed lowers a young person's self-reported level of political interest, has a negative effect on the likelihood of a young person going to vote and makes a young person less likely to participate in a public demonstration. It was also found that an individual's level of education positively affects his/her political engagement on all three dimensions, i.e. those with higher levels of education exhibit a greater tendency to engage with the political process. The country-specific effect on political interest in different countries of the EU is also depicted.
 
 In all, we can say that the state of unemployment and the level of education have a real, demonstrable effect on an individual's level of political engagement. The result indicates that apart from being an economic problem, youth unemployment affects the fundamental ethos of a democratic society by adversely affecting the level of political engagement of the youth. 
 
