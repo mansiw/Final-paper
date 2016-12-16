@@ -61,7 +61,7 @@ The below graph gives a window into one of the ESS measures of political engagem
 ```{r, echo = F, warning = F, message = F}
 comparepolintr <- subset(YouthData, YouthData$cntry == "DE"|YouthData$cntry == "DK"|YouthData$cntry == "ES"|YouthData$cntry == "FR"|YouthData$cntry == "HU"|YouthData$cntry == "IE"|YouthData$cntry == "NL")
 
-polintrplot <- ggplot(data = comparepolintr, aes(x=TIME, y=avgpolintr)) + geom_line(aes(colour=cntry)) + scale_x_continuous(breaks = c(2002, 2004, 2006, 2008, 2010, 2012), labels=c("2002","2004","2006","2008","2010","2012"), limits = c(2002,2012)) + labs(x="Years", y="Average Political Interest", color = "Countries") + ggtitle("Average Political Interest for Youth (Select Countries)") + guides(fill = guide_legend(title = "Countries"))
+polintrplot <- ggplot(data = comparepolintr, aes(x=TIME, y=avgpolintr)) + geom_line(aes(colour=cntry)) + scale_x_continuous(breaks = c(2002, 2004, 2006, 2008, 2010, 2012, 2014), labels=c("2002","2004","2006","2008","2010","2012", "2014"), limits = c(2002,2014)) + labs(x="Years", y="Average Political Interest", color = "Countries") + ggtitle("Average Political Interest for Youth (Select Countries)") + guides(fill = guide_legend(title = "Countries"))
 
 ggplotly(polintrplot)
 
