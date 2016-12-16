@@ -207,8 +207,7 @@ stargazer::stargazer(m3.1d, covariate.labels = m3.1dlabels, type = "latex", head
 
 ```  
 
-The "Comparing Country Coefficients" plot helps visualize the variation in country coefficients. Countries that have tended to have lower youth unemployment rates (like Germany, Denmark, and the Netherlands) are close to the bottom of the plot, which implies that the magnitude of the effect of unemployment on political interest is lower in these countries. On the other hand, countries that have typically had higher youth unemployment (like Greece and Ireland) exhibit larger coefficients. This means that the impact of unemployment on political interest levels among the youth is larger as well. In the case of these countries, unemployment affects political interest more negatively than it does in other countries.
-
+The "Comparing Country Coefficients" plot helps visualize the variation in country coefficients. Countries that have tended to have lower youth unemployment rates (like Germany, Denmark, and the Netherlands) are close to the bottom of the plot, which implies that they have higher levels of political interest as compared to countries with higher youth unemployment rates, who exhibit lower political interest. 
 
 
 ```{r, echo = F}
